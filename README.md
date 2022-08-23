@@ -33,6 +33,7 @@ const axios = require('axios');
     // Connect to the Chrome instance
     const browser = await puppeteer.connect({
         spm_apikey: '<SPM_APIKEY>',
+        spm_host: 'http://proxy.zyte.com:8011',
         ignoreHTTPSErrors: true,
         browserWSEndpoint: webSocketDebuggerUrl,
     });
@@ -68,6 +69,7 @@ additional arguments defined below:
 | Argument | Default Value | Description |
 |----------|---------------|-------------|
 | `spm_apikey` | `undefined` | Zyte Smart Proxy Manager API key that can be found on your zyte.com account. |
+| `spm_host` | `http://proxy.zyte.com:8011` | Zyte Smart Proxy Manager proxy host. |
 | `static_bypass` | `true` | When `true` ZyteProxyPuppeteer will skip proxy use for static assets defined by `static_bypass_regex` or pass `false` to use proxy. |
 | `static_bypass_regex` | `/.*?\.(?:txt\|json\|css\|less\|gif\|ico\|jpe?g\|svg\|png\|webp\|mkv\|mp4\|mpe?g\|webm\|eot\|ttf\|woff2?)$/` | Regex to use filtering URLs for `static_bypass`. |
 | `block_ads` | `true` | When `true` ZyteProxyPuppeteer will block ads defined by `block_list` using `@cliqz/adblocker-puppeteer` package. |
