@@ -76,5 +76,17 @@ additional arguments defined below:
 | `block_list` | `['https://easylist.to/easylist/easylist.txt', 'https://easylist.to/easylist/easyprivacy.txt']` | Block list to be used by ZyteProxyPuppeteer in order to initiate blocker enginer using `@cliqz/adblocker-puppeteer` and block ads |
 | `headers` | `{'X-Crawlera-No-Bancheck': '1', 'X-Crawlera-Profile': 'pass', 'X-Crawlera-Cookies': 'disable'}` | List of headers to be appended to requests |
 
-### Notes
-Some websites may not work with `block_ads` and `static_bypass` enabled (default). Try to disable them if you encounter any issues.
+## Notes
+- Some websites may not work with `block_ads` and `static_bypass` enabled (default). Try to disable them if you encounter any issues.
+
+- When using remote browser in `headless` mode, values generated for some browser-specific headers are a bit different, which may be detected by websites. Try using ['X-Crawlera-Profile': 'desktop'](https://docs.zyte.com/smart-proxy-manager.html#x-crawlera-profile) in that case:
+``` javascript
+    const browser = await puppeteer.connect({
+        spm_apikey: '<SPM_APIKEY>',
+        spm_host: 'http://proxy.zyte.com:8011',
+        ignoreHTTPSErrors: true,
+        browserWSEndpoint: webSocketDebuggerUrl,
+        headers: {'X-Crawlera-No-Bancheck': '1', 'X-Crawlera-Profile': 'desktop', 'X-Crawlera-Cookies': 'disable'}
+    });
+```
+
