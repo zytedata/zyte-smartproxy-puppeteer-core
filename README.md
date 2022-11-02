@@ -36,6 +36,8 @@ const axios = require('axios');
         spm_host: 'http://proxy.zyte.com:8011',
         ignoreHTTPSErrors: true,
         browserWSEndpoint: webSocketDebuggerUrl,
+        static_bypass: false, //  enable to save bandwidth (but may break some websites)
+        block_ads: false, //  enable to save bandwidth (but may break some websites)
     });
     console.log('Before new page');
     const page = await browser.newPage();
@@ -90,3 +92,5 @@ additional arguments defined below:
     });
 ```
 
+- Consider our new [zyte-smartproxy-plugin](https://github.com/zytedata/zyte-smartproxy-plugin) for [playwright-extra](https://github.com/berstend/puppeteer-extra/tree/master/packages/playwright-extra) 
+and [puppeteer-extra](https://github.com/berstend/puppeteer-extra/tree/master/packages/puppeteer-extra) frameworks.
